@@ -38,10 +38,12 @@ insert into pilote values (1, 'Karim IDRISSI', '12 Rue Atlas Casablanca'),
 							(3, 'Ahmed Oujdaoui', '42 Rif Road Rabat'),
 							(4, 'Amal','Tanger');
 select * from pilote;
-update vol set NP = case NV 		when NV = 'IT100' then NP = 1
-									when NV = 'IT101' then NP = 2
-									when NV = 'IT102' then NP = 3
-									when NV = 'IT103' then NP = 1
-									when NV = 'IT104' then NP = 2
-									end
-									where NV = NP;
+update vol set NP = 1 where nv = 'IT100';
+update vol set NP = 2 where nv = 'IT101';
+update vol set NP = 3 where nv = 'IT102';
+update vol set NP = 1 where nv = 'IT103';
+update vol set NP = 2 where nv = 'IT104';
+-- selectionner les pilotes quit conduit les vol 100 et 104 :
+select pilote.nom, pilote.adresse from pilote
+	join vol on (vol.np = pilote.np)
+	where vol.NV in ('IT100','IT104');
