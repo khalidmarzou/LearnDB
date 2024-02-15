@@ -19,3 +19,6 @@ select distinct localite from avion;
 -- Afficher les avions dans la localite et Rabat ou Casa :
 select * from avion where localite = 'RABAT' or localite = 'CASA';
 select * from avion where localite in ('RABAT','CASA');
+-- Modifier une valeur :
+update avion set capacite = 220 where NA = 101;
+
