@@ -13,6 +13,5 @@ alter table employes
 	add column coffeeshop int;
 -- to add a foreign key :
 alter table employes
-	add foreign key coffeeshop references shops(coffeeshop);
-	
+	add foreign key (coffeeshop) references shops(coffeeshop_id);
 	
