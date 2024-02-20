@@ -47,3 +47,41 @@ update vol set NP = 2 where nv = 'IT104';
 select pilote.nom, pilote.adresse from pilote
 	join vol on (vol.np = pilote.np)
 	where vol.NV in ('IT100','IT104');
+-- where :  est pour ajouter une condition ; null ; is not null ; between ; like : where first_name like 'A%' 
+-- on utilise % pour signife plusieurs caracteres ; _e_n__ on utilise _ si en connais la position exact des caracteres
+-- where price between 10 and 15 ; we can use between date , 10 and 15 est inclus dans range;
+-- AS (Alias) : select product_name AS "Mes Produits" from products, creer une neauvaux colone temporaire;
+-- EX d'APP :
+-- Afficher tous les enregistrements de la table VOL :
+select * from vol;
+-- Afficher le nom et l'adresse de tous les pilotes :
+select nom, adresse from pilote;
+-- Afficher les vols dont l'heures de départ est apres 14h :
+select * from vol where hd >= 1400;
+-- Afficher les pilotes dont le nom commence par "A" :
+select * from pilote where nom like 'A%';
+-- Afficher les avions bases a Rabat, avec la localité renommée en "Emplacement" :
+select na,nom,capacite,localite as Emplacement from avion where localite = 'RABAT';
+-- Afficher tous les vols tries par la ville de depart :
+select * from vol order by vd; -- desc descendent ; asc ascendent ;
+-- group by est utilise pour grouper plusieurs resultats et utiliser une fonction sur un groupe de resultat.
+-- group by on utilise having au place du where ;
+-- limit utilise pour specifier le nombre max de resultats que l on sauhaite obtenir.
+-- selct * from table limit 10 offset 5 , limit c est le nembre de lignes afficher et offset est witch line de depart.
+-- Jointures :
+/* inner join ; from table1 inner join table2 on (condition of the same column in the two tables);
+on resume dans : table1 jointure avec table2 on condition ,
+il est possible de fait select from table1,table2 where condition*/
+-- EX APP :
+-- Afficher le nom et l'adresse des pilotes assuant les vols IT104 et IT100 :
+select nom, adresse from pilote inner join vol on pilote.np = vol.np where vol.nv in ('IT100','IT104');
+-- Afficher le nombre total de vols effectués par chaque pilote avec le nom du pilote :
+select pilote.nom, count(vol.np) as nombreVol -- on work with group by always when we have a function in the requette
+	from pilote inner join vol on pilote.np = vol.np group by pilote.nom; --chaque est automatiquement un group by;
+-- Afficher les noms des pilotes qui conduisent un AIRBUS :
+	-- Ma Methode :
+select distinct pilote.nom from (select * from vol inner join avion on vol.na = avion.na)  as avionVolTable
+	inner join pilote on pilote.np = avionVolTable.np where avionVolTable.nom like 'AIRBUS';
+	-- Methode Simple :
+select distinct pilote.nom from pilote join vol on pilote.np = vol.np
+	inner join avion on vol.na = avion.na where avion.nom like 'AIRBUS';
