@@ -1,0 +1,28 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "GestionVols",
+      "database": "GestionVols",
+      "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "GestionCofee",
+      "database": "GestionDesCafes",
+      "username": "postgres"
+    }
+  ],
+  "Prettier-SQL.commaPosition": "after",
+  "Prettier-SQL.expressionWidth": 30,
+  "Prettier-SQL.keywordCase": "upper",
+  "Prettier-SQL.linesBetweenQueries": 3
+}
