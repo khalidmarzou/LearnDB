@@ -64,3 +64,228 @@ This is useful when you want to allow rows in the child table to exist without a
 table creation if the referenced row is deleted or updated.
  **NO ACTION**: This option is similar to `RESTRICT` in that it prevents the deletion or update of a referenced row
 if dependent rows exist in the child table. It's often the default behavior if no action is explicitly specified.*/
+CREATE TABLE
+  locations (
+    city_id INT PRIMARY key,
+    city VARCHAR(10),
+    country VARCHAR(10)
+  )
+ALTER TABLE shops add city_id INT;
+
+
+
+ALTER TABLE shops add FOREIGN key (city_id) REFERENCES locations (city_id);
+
+
+
+CREATE TABLE
+  fourniseurs (
+    coffeshop_id INT,
+    supplier_name VARCHAR(10),
+    PRIMARY key (coffeshop_id, supplier_name),
+    FOREIGN key (coffeshop_id) REFERENCES shops (coffeeshop_id),
+    cofee_type VARCHAR(10)
+  );
+
+
+
+SELECT
+  *
+FROM
+  employes;
+
+
+
+INSERT INTO
+  employes
+VALUES
+  (
+    501559,
+    'carson',
+    'Mosconi',
+    'cmosconi0@census.gov',
+    '2015/08/29',
+    'M',
+    32973,
+    NULL
+  ),
+  (
+    144108,
+    'khalil',
+    'corr',
+    'kcorr1@github.io',
+    '2014/04/23',
+    'M',
+    52802,
+    NULL
+  );
+
+
+
+INSERT INTO
+  shops
+VALUES
+  (1, 'Common Grounds', NULL),
+  (2, 'Early Rise', NULL),
+  (3, 'Accident Bean', NULL),
+  (4, 'Urban Gring', NULL),
+  (5, 'Trembling Cup', NULL);
+
+
+
+SELECT
+  *
+FROM
+  locations;
+
+
+
+ALTER TABLE locations
+ALTER COLUMN country type VARCHAR(30);
+
+
+
+INSERT INTO
+  locations
+VALUES
+  (
+    1,
+    'Los Angeles',
+    'United States'
+  ),
+  (
+    2,
+    'New York',
+    'United States'
+  ),
+  (3, 'London', 'United Kingdom')
+UPDATE shops
+SET
+  city_id=1
+WHERE
+  coffeeshop_id=1;
+
+
+
+UPDATE shops
+SET
+  city_id=2
+WHERE
+  coffeeshop_id=2;
+
+
+
+UPDATE shops
+SET
+  city_id=3
+WHERE
+  coffeeshop_id=3;
+
+
+
+UPDATE shops
+SET
+  city_id=1
+WHERE
+  coffeeshop_id=4;
+
+
+
+UPDATE shops
+SET
+  city_id=2
+WHERE
+  coffeeshop_id=5;
+
+
+
+UPDATE employes
+SET
+  coffeeshop_id=1
+WHERE
+  id=501559;
+
+
+
+UPDATE employes
+SET
+  coffeeshop_id=1
+WHERE
+  id=144108;
+
+
+
+SELECT
+  *
+FROM
+  fourniseurs;
+
+
+
+ALTER TABLE fourniseurs
+ALTER COLUMN supplier_name type VARCHAR(30);
+
+
+
+INSERT INTO
+  fourniseurs
+VALUES
+  (2, 'Vanilia Bean', 'Liberica'),
+  (
+    2,
+    'Beans and Barley',
+    'Arabica'
+  ),
+  (2, 'Cool Beans', 'Robusta'),
+  (3, 'Bean Me UP', 'Excelsa'),
+  (3, 'Vanilla Bean', 'Liberica'),
+  (3, 'Cool Beans', 'robusta'),
+  (
+    3,
+    'Beans and Balery',
+    'Arabica'
+  ),
+  (4, 'Vanilla Bean', 'Liberica'),
+  (4, 'Bean Me Up', 'Excelsa'),
+  (
+    5,
+    'Beans and Barley',
+    'Arabica'
+  );
+
+
+
+SELECT
+  *
+FROM
+  fourniseurs;
+
+
+
+UPDATE fourniseurs
+SET
+  supplier_name='Beans and Barley'
+WHERE
+  supplier_name IN (
+    'Beans and Berley',
+    'Beans and Barley',
+    'Beans and Balery'
+  );
+
+
+
+SELECT
+  *
+FROM
+  fourniseurs
+WHERE
+  supplier_name='Beans and Barley';
+
+
+
+SELECT
+  *
+FROM
+  fourniseurs
+WHERE
+  cofee_type NOT ('robusta')
