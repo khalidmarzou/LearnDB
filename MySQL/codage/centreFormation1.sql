@@ -1,41 +1,249 @@
+CREATE database CENTERFORMATION;
 
-#create database CENTERFORMATION ;
-#use CENTERFORMATION ;
-#create table etudiant(numcinetu varchar (10) primary key, nometu varchar (10), prenometu varchar(10), teletu varchar (10), adresseetu varchar (15),filiereetu varchar (10));
-#create table sessions (codesess varchar(15) primary key,nomsess varchar(10),datedebut date )
-#create table formation (codeform varchar(15)primary key ,titreform varchar(10),dureeform varchar(8))
-#create table specialite(codespec varchar(15) primary key,nomspec varchar(10))
-#create table inscription (numcinetu varchar (10),codesess varchar(15),typecours varchar(10),foreign key(numcinetu) references etudiant(numcinetu), foreign key(codesess) references sessions(codesess))
-#create table combinaison (codespec varchar(15),codeform varchar(15),foreign key(codespec) references specialite(codespec),foreign key(codeform) references formation(codeform))
-#insert into etudiant value ("m01","EL HAIDI","MOHAMED","06123456","hay osra","reseaux")
-#insert into etudiant value ("m02","Bennis","SOUFIANE","064565","hay lfala7","gestion")
-#insert into etudiant value ("m03","SALMAM","ABDELAH","06138768","drisia","dd")
-#insert into etudiant value ("m04","DEROUI","SAAD","0634456","sbata","id")
-#insert into sessions value ("a1","python","2024-04-15")
-#insert into sessions value ("a2","html","2023-05-05")
-#insert into sessions value ("a3","css","2024-09-13")
-#insert into sessions value ("a4","php","2024-10-19")
-#insert into formation value ("100","formation1","6 mois")
-#insert into formation value ("200","formation2"," 1 ans")
-#insert into formation value ("300","formation3","3 mois");
-#insert into formation value ("400","formation4","2 ans")
-#insert into specialite value ("s1","rv");
-#insert into specialite value ("s2","mobile")
-#insert into specialite value ("s3","coding");
-#insert into specialite value ("s4","dantiste")
-#insert into inscription value ("m01","a1","presentiel");
-#insert into inscription value ("m02","a2","enligne");
-#insert into inscription value ("m03","a3","hybrid");
-#insert into inscription value ("m04","a4","enligne")
-#insert into combinaison value ("s1","100");
-#insert into combinaison value ("s2","200");
-#insert into combinaison value ("s3","300");
-#insert into combinaison value ("s4","400");
-#select nomEtu ,prenomEtu, typecours from etudiant, inscription where etudiant.numcinetu = inscription.numcinetu;
-#select distinct nomsess, titreform from sessions, formation ,inscription where sessions.codesess=inscription.codesess and datedebut < "2024-05-05" and dureeform = " 1 ans";
-#select distinct nomspec, dureeform from combinaison, specialite, formation where formation.codeform = combinaison.codeform and specialite.codespec = combinaison.codespec;
-#select distinct datedebut, dureeform from sessions, formation, inscription where sessions.codesess=inscription.codesess ;
-#select distinct datedebut, dureeform from sessions, formation;
-#select sum(dureeform) as dureetotal, avg(dureeform) as moyenne from formation;
-#select titreform from formation where dureeform = (select max(dureeform) from formation);
-#select typecours, nomsess from inscription, sessions where inscription.codesess=sessions.codesess and datedebut between '2024-04-15' and '2024-10-19';
+
+
+use CENTERFORMATION;
+
+
+
+CREATE TABLE
+  etudiant (
+    numcinetu VARCHAR(10) PRIMARY key,
+    nometu VARCHAR(10),
+    prenometu VARCHAR(10),
+    teletu VARCHAR(10),
+    adresseetu VARCHAR(15),
+    filiereetu VARCHAR(10)
+  );
+
+
+
+CREATE TABLE
+  sessions (
+    codesess VARCHAR(15) PRIMARY key,
+    nomsess VARCHAR(10),
+    datedebut DATE
+  )
+CREATE TABLE
+  formation (
+    codeform VARCHAR(15) PRIMARY key,
+    titreform VARCHAR(10),
+    dureeform VARCHAR(8)
+  )
+CREATE TABLE
+  specialite (
+    codespec VARCHAR(15) PRIMARY key,
+    nomspec VARCHAR(10)
+  )
+CREATE TABLE
+  inscription (
+    numcinetu VARCHAR(10),
+    codesess VARCHAR(15),
+    typecours VARCHAR(10),
+    FOREIGN key (numcinetu) REFERENCES etudiant (numcinetu),
+    FOREIGN key (codesess) REFERENCES sessions (codesess)
+  )
+CREATE TABLE
+  combinaison (
+    codespec VARCHAR(15),
+    codeform VARCHAR(15),
+    FOREIGN key (codespec) REFERENCES specialite (codespec),
+    FOREIGN key (codeform) REFERENCES formation (codeform)
+  )
+INSERT INTO
+  etudiant VALUE (
+    "m01",
+    "EL HAIDI",
+    "MOHAMED",
+    "06123456",
+    "hay osra",
+    "reseaux"
+  )
+INSERT INTO
+  etudiant VALUE (
+    "m02",
+    "Bennis",
+    "SOUFIANE",
+    "064565",
+    "hay lfala7",
+    "gestion"
+  )
+INSERT INTO
+  etudiant VALUE (
+    "m03",
+    "SALMAM",
+    "ABDELAH",
+    "06138768",
+    "drisia",
+    "dd"
+  )
+INSERT INTO
+  etudiant VALUE (
+    "m04",
+    "DEROUI",
+    "SAAD",
+    "0634456",
+    "sbata",
+    "id"
+  )
+INSERT INTO
+  sessions VALUE ("a1", "python", "2024-04-15")
+INSERT INTO
+  sessions VALUE ("a2", "html", "2023-05-05")
+INSERT INTO
+  sessions VALUE ("a3", "css", "2024-09-13")
+INSERT INTO
+  sessions VALUE ("a4", "php", "2024-10-19")
+INSERT INTO
+  formation VALUE ("100", "formation1", "6 mois")
+INSERT INTO
+  formation VALUE ("200", "formation2", " 1 ans")
+INSERT INTO
+  formation VALUE ("300", "formation3", "3 mois");
+
+
+
+INSERT INTO
+  formation VALUE ("400", "formation4", "2 ans")
+INSERT INTO
+  specialite VALUE ("s1", "rv");
+
+
+
+INSERT INTO
+  specialite VALUE ("s2", "mobile")
+INSERT INTO
+  specialite VALUE ("s3", "coding");
+
+
+
+INSERT INTO
+  specialite VALUE ("s4", "dantiste")
+INSERT INTO
+  inscription VALUE ("m01", "a1", "presentiel");
+
+
+
+INSERT INTO
+  inscription VALUE ("m02", "a2", "enligne");
+
+
+
+INSERT INTO
+  inscription VALUE ("m03", "a3", "hybrid");
+
+
+
+INSERT INTO
+  inscription VALUE ("m04", "a4", "enligne")
+INSERT INTO
+  combinaison VALUE ("s1", "100");
+
+
+
+INSERT INTO
+  combinaison VALUE ("s2", "200");
+
+
+
+INSERT INTO
+  combinaison VALUE ("s3", "300");
+
+
+
+INSERT INTO
+  combinaison VALUE ("s4", "400");
+
+
+
+SELECT
+  nomEtu,
+  prenomEtu,
+  typecours
+FROM
+  etudiant,
+  inscription
+WHERE
+  etudiant.numcinetu=inscription.numcinetu;
+
+
+
+SELECT DISTINCT
+  nomsess,
+  titreform
+FROM
+  sessions,
+  formation,
+  inscription
+WHERE
+  sessions.codesess=inscription.codesess AND
+  datedebut<"2024-05-05" AND
+  dureeform=" 1 ans";
+
+
+
+SELECT DISTINCT
+  nomspec,
+  dureeform
+FROM
+  combinaison,
+  specialite,
+  formation
+WHERE
+  formation.codeform=combinaison.codeform AND
+  specialite.codespec=combinaison.codespec;
+
+
+
+SELECT DISTINCT
+  datedebut,
+  dureeform
+FROM
+  sessions,
+  formation,
+  inscription
+WHERE
+  sessions.codesess=inscription.codesess;
+
+
+
+SELECT DISTINCT
+  datedebut,
+  dureeform
+FROM
+  sessions,
+  formation;
+
+
+
+SELECT
+  SUM(dureeform) AS dureetotal,
+  AVG(dureeform) AS moyenne
+FROM
+  formation;
+
+
+
+SELECT
+  titreform
+FROM
+  formation
+WHERE
+  dureeform=(
+    SELECT
+      MAX(dureeform)
+    FROM
+      formation
+  );
+
+
+
+SELECT
+  typecours,
+  nomsess
+FROM
+  inscription,
+  sessions
+WHERE
+  inscription.codesess=sessions.codesess AND
+  datedebut BETWEEN '2024-04-15' AND '2024-10-19';

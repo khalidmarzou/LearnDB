@@ -19,6 +19,17 @@
       "name": "GestionVoitures",
       "database": "GestionVoitures",
       "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "Railway_Management_System",
+      "database": "Railway_Management_System",
+      "username": "postgres"
     }
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

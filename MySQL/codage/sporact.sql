@@ -1,109 +1,639 @@
-#create database SPORACT;
-#use SPORACT;
-
-#create table centre(
-#	 numc int,
-#    nomc varchar(20),
-#    vilc varchar(20),
-#	 coutins decimal(5,2));
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(1584,"Gymtastic", "Casablanca",120.00);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(1447,"cityClub","Rabat",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(3254,"cityClub","Tanger",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(9954,"cityClub","Marrakech",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(6745,"cityClub","Agadir",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(3321,"cityClub","Settat",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(7775,"cityClub","Casablanca",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(5541,"cityClub","Tetouane",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(0021,"cityClub","Rabat",350.60);
-#insert into sporact.centre(numc,nomc,vilc,coutins) values(9465,"cityClub","Salé",350.60);
+CREATE database SPORACT;
 
 
-#create table adherant(numa int,
-	#noma varchar(20),
-	#prenoma varchar(20),
-    #vila varchar(20));
-#insert into adherant(numa,noma,prenoma,vila) values(123,"BAI","Said","Casablanca");
-#insert into adherant(numa,noma,prenoma,vila) values(456,"Bouchra","AHRICH","Marrakech");
-#insert into adherant(numa,noma,prenoma,vila) values(118,"MGHIMED","fahd","Tetouane");
-#insert into adherant(numa,noma,prenoma,vila) values(745,"GHAMRAOUI","anas","Agadir");
-#insert into adherant(numa,noma,prenoma,vila) values(998,"FALLAH","mohammed","Marrakech");
-#insert into adherant(numa,noma,prenoma,vila) values(130,"HIWANI","abdel","Marrakech");
-#insert into adherant(numa,noma,prenoma,vila) values(750,"OUBAID","zyad","Settet");
-#insert into adherant(numa,noma,prenoma,vila) values(914,"BILAD","soufiane","Casablanca");
-#insert into adherant(numa,noma,prenoma,vila) values(911,"HEKKI","haitam","Casablanca");
-#insert into adherant(numa,noma,prenoma,vila) values(115,"BASLI","amine","Casablanca");
+
+use SPORACT;
 
 
-#create table sport(noms varchar(20) primary key);
-#insert into sport(noms) value("Tennis");
-#insert into sport(noms) value("Football");
-#insert into sport(noms) value("Musclation");
-#insert into sport(noms) value("equitation");
-#insert into sport(noms) value("basketball");
-#insert into sport(noms) value("volleyball");
-#insert into sport(noms) value("natation");
-#insert into sport(noms) value("hockey");
-#insert into sport(noms) value("rugby");
- 
- 
-#create table est_membre(numa int,
-#numc int,
-#dateEng date);
-#insert into est_membre(numa,numc,dateEng) values(123,1584,"2020-09-12");
-#insert into est_membre(numa,numc,dateEng) values(456,1584,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(118,3254,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(745,1584,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(998,0021,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(130,9465,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(750,1584,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(914,7775,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(911,7775,"2023-11-04");
-#insert into est_membre(numa,numc,dateEng) values(115,7775,"2023-11-04");
- 
-#create table propose(numc int,
-#noms varchar(20));
-#insert into propose(numc,noms) values(1584,"Musclation");
-#insert into propose(numc,noms) values(6745,"Football");
-#insert into propose(numc,noms) values(1447,"rugby");
-#insert into propose(numc,noms) values(1447,"natation");
-#insert into propose(numc,noms) values(6745, "HandBall");
 
-#create table pratique(numa int,
-#numc int,
-#noms varchar(20));
-#insert into pratique(numa,numc,noms) values(123,1584,"Musclation");
-#insert into pratique(numa,numc,noms) values(456,1447,"Football");
-#insert into pratique(numa,numc,noms) values(456,1447,"natation");
-#insert into pratique(numa,numc,noms) values(456,1447,"HandBall");
+CREATE TABLE
+  centre (
+    numc INT,
+    nomc VARCHAR(20),
+    vilc VARCHAR(20),
+    coutins DECIMAL(5, 2)
+  );
 
-#######################################################################################################################
 
-#use sporact;
-#select noms from propose;
-#select nomc,vilc from centre;
-#select * from centre where vilc="Casablanca";
-#select nomc from centre where vilc="Rabat";
-#select CENTRE.numc from CENTRE,PROPOSE where CENTRE.numc = PROPOSE.noms and CENTRE.vilc ="agadir" and PROPOSE.noms #= "Football" and PROPOSE.noms="HandBall";
-#select numc, nomc,vilc,coutins, coutins*1/5 as tva, coutins*120/100 as ttc, coutins*5/100 as remise, #coutins*120/100*95/100 as net from centre;
-#select*from centre,propose where centre.numc=propose.numc;
-#select numc from propose where noms="Musclation" AND noms="equitation";
-#select centre.numc,centre.nomc,centre.vilc from propose,centre where centre.numc=propose.numc;
-#alter table centre 
-      #add tel varchar(10),
-      #add adresse varchar(45);
-#alter table centre
-	#change column numc numeroc INT ;
-#alter table centre add cp varchar(5);
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    1584,
+    "Gymtastic",
+    "Casablanca",
+    120.00
+  );
 
-#select *, MAX(coutins) as maximum from centre;
-#select *,max(coutins) as maximum, min(coutins) as minimum from centre;
-#select * from centre where coutins=(select max(coutins) as maximum from centre);
-#use sporact;
-#update centre set cp=20000 where numeroc=1584;
-#select * from centre,adherant where adherant.numa>centre.numeroc;
-#delete from centre where vilc='Tanger';
-####################################################################################"
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    1447,
+    "cityClub",
+    "Rabat",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    3254,
+    "cityClub",
+    "Tanger",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    9954,
+    "cityClub",
+    "Marrakech",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    6745,
+    "cityClub",
+    "Agadir",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    3321,
+    "cityClub",
+    "Settat",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    7775,
+    "cityClub",
+    "Casablanca",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    5541,
+    "cityClub",
+    "Tetouane",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    0021,
+    "cityClub",
+    "Rabat",
+    350.60
+  );
+
+
+
+INSERT INTO
+  sporact.centre (numc, nomc, vilc, coutins)
+VALUES
+  (
+    9465,
+    "cityClub",
+    "Salé",
+    350.60
+  );
+
+
+
+CREATE TABLE
+  adherant (
+    numa INT,
+    noma VARCHAR(20),
+    prenoma VARCHAR(20),
+    vila VARCHAR(20)
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    123,
+    "BAI",
+    "Said",
+    "Casablanca"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    456,
+    "Bouchra",
+    "AHRICH",
+    "Marrakech"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    118,
+    "MGHIMED",
+    "fahd",
+    "Tetouane"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    745,
+    "GHAMRAOUI",
+    "anas",
+    "Agadir"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    998,
+    "FALLAH",
+    "mohammed",
+    "Marrakech"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    130,
+    "HIWANI",
+    "abdel",
+    "Marrakech"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    750,
+    "OUBAID",
+    "zyad",
+    "Settet"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    914,
+    "BILAD",
+    "soufiane",
+    "Casablanca"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    911,
+    "HEKKI",
+    "haitam",
+    "Casablanca"
+  );
+
+
+
+INSERT INTO
+  adherant (numa, noma, prenoma, vila)
+VALUES
+  (
+    115,
+    "BASLI",
+    "amine",
+    "Casablanca"
+  );
+
+
+
+CREATE TABLE
+  sport (noms VARCHAR(20) PRIMARY key);
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("Tennis");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("Football");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("Musclation");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("equitation");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("basketball");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("volleyball");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("natation");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("hockey");
+
+
+
+INSERT INTO
+  sport (noms) VALUE ("rugby");
+
+
+
+CREATE TABLE
+  est_membre (
+    numa INT,
+    numc INT,
+    dateEng DATE
+  );
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (123, 1584, "2020-09-12");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (456, 1584, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (118, 3254, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (745, 1584, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (998, 0021, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (130, 9465, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (750, 1584, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (914, 7775, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (911, 7775, "2023-11-04");
+
+
+
+INSERT INTO
+  est_membre (numa, numc, dateEng)
+VALUES
+  (115, 7775, "2023-11-04");
+
+
+
+CREATE TABLE
+  propose (numc INT, noms VARCHAR(20));
+
+
+
+INSERT INTO
+  propose (numc, noms)
+VALUES
+  (1584, "Musclation");
+
+
+
+INSERT INTO
+  propose (numc, noms)
+VALUES
+  (6745, "Football");
+
+
+
+INSERT INTO
+  propose (numc, noms)
+VALUES
+  (1447, "rugby");
+
+
+
+INSERT INTO
+  propose (numc, noms)
+VALUES
+  (1447, "natation");
+
+
+
+INSERT INTO
+  propose (numc, noms)
+VALUES
+  (6745, "HandBall");
+
+
+
+CREATE TABLE
+  pratique (
+    numa INT,
+    numc INT,
+    noms VARCHAR(20)
+  );
+
+
+
+INSERT INTO
+  pratique (numa, numc, noms)
+VALUES
+  (123, 1584, "Musclation");
+
+
+
+INSERT INTO
+  pratique (numa, numc, noms)
+VALUES
+  (456, 1447, "Football");
+
+
+
+INSERT INTO
+  pratique (numa, numc, noms)
+VALUES
+  (456, 1447, "natation");
+
+
+
+INSERT INTO
+  pratique (numa, numc, noms)
+VALUES
+  (456, 1447, "HandBall");
+
+
+
+use sporact;
+
+
+
+SELECT
+  noms
+FROM
+  propose;
+
+
+
+SELECT
+  nomc,
+  vilc
+FROM
+  centre;
+
+
+
+SELECT
+  *
+FROM
+  centre
+WHERE
+  vilc="Casablanca";
+
+
+
+SELECT
+  nomc
+FROM
+  centre
+WHERE
+  vilc="Rabat";
+
+
+
+SELECT
+  CENTRE.numc
+FROM
+  CENTRE,
+  PROPOSE
+WHERE
+  CENTRE.numc=PROPOSE.noms AND
+  CENTRE.vilc="agadir" AND
+  PROPOSE.noms="Football" AND
+  PROPOSE.noms="HandBall";
+
+
+
+SELECT
+  numc,
+  nomc,
+  vilc,
+  coutins,
+  coutins*1/5            AS tva,
+  coutins*120/100        AS ttc,
+  coutins*5/100          AS remise,
+  coutins*120/100*95/100 AS net
+FROM
+  centre;
+
+
+
+SELECT
+  *
+FROM
+  centre,
+  propose
+WHERE
+  centre.numc=propose.numc;
+
+
+
+SELECT
+  numc
+FROM
+  propose
+WHERE
+  noms="Musclation" AND
+  noms="equitation";
+
+
+
+SELECT
+  centre.numc,
+  centre.nomc,
+  centre.vilc
+FROM
+  propose,
+  centre
+WHERE
+  centre.numc=propose.numc;
+
+
+
+ALTER TABLE centre add tel VARCHAR(10),
+add adresse VARCHAR(45);
+
+
+
+ALTER TABLE centre change COLUMN numc numeroc INT;
+
+
+
+ALTER TABLE centre add cp VARCHAR(5);
+
+
+
+SELECT
+  *,
+  MAX(coutins) AS maximum
+FROM
+  centre;
+
+
+
+SELECT
+  *,
+  MAX(coutins) AS maximum,
+  MIN(coutins) AS minimum
+FROM
+  centre;
+
+
+
+SELECT
+  *
+FROM
+  centre
+WHERE
+  coutins=(
+    SELECT
+      MAX(coutins) AS maximum
+    FROM
+      centre
+  );
+
+
+
+use sporact;
+
+
+
+UPDATE centre
+SET
+  cp=20000
+WHERE
+  numeroc=1584;
+
+
+
+SELECT
+  *
+FROM
+  centre,
+  adherant
+WHERE
+  adherant.numa>centre.numeroc;
+
+
+
+DELETE FROM centre
+WHERE
+  vilc='Tanger';

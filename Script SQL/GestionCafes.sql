@@ -284,8 +284,77 @@ WHERE
 
 
 SELECT
-  *
+  first_name,
+  last_name,
+  coffeeshop_name
+FROM
+  employes
+  INNER JOIN shops ON employes.coffeeshop_id=shops.coffeeshop_id;
+
+
+
+SELECT
+  first_name,
+  last_name,
+  coffeeshop_name
+FROM
+  shops
+  LEFT JOIN employes ON shops.coffeeshop_id=employes.coffeeshop_id;
+
+
+
+SELECT
+  first_name,
+  last_name,
+  coffeeshop_name
+FROM
+  shops
+  NATURAL JOIN employes;
+
+
+
+SELECT
+  first_name,
+  coffeeshop_name
+FROM
+  shops -- tous les cas possible
+  CROSS JOIN employes;
+
+
+
+SELECT
+  first_name
+FROM
+  employes
+UNION -- on ajout all pour afficher les doubles
+SELECT
+  coffeeshop_name
+FROM
+  shops;
+
+
+
+-- intersect pour afficher tous qui dans les deux tables
+-- except table minus table2
+-- Question 4:
+SELECT
+  coffeeshop_name,
+  SUM(salary)     AS Total_Salaires
+FROM
+  employes
+  NATURAL JOIN shops
+GROUP BY
+  coffeeshop_name;
+
+
+
+-- Question 5:
+SELECT
+  supplier_name,
+  cofee_type,
+  coffeeshop_name
 FROM
   fourniseurs
+  NATURAL JOIN shops
 WHERE
-  cofee_type NOT ('robusta')
+  coffeeshop_name='Urban Gring';
