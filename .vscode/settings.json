@@ -29,7 +29,18 @@
       "name": "Railway_Management_System",
       "database": "Railway_Management_System",
       "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "RMS",
+      "database": "RMS",
+      "username": "postgres"
     }
   ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "Prettier-SQL.expressionWidth": 100,
+  "sql-formatter.uppercase": true
 }
